@@ -1,27 +1,55 @@
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid } from '@mui/material'
+import { useContext, useState } from 'react';
+import { Button, Checkbox, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid } from '@mui/material'
+import { ContactsContext } from '../contexts/ContactsContext';
+import { ConversationsContext } from '../contexts/ConversationsContext';
 
-export const NewConversationModal = () => {
+
+interface ModalProps {
+  setOpenModal(open: boolean): void
+}
+
+export const NewConversationModal = ({ setOpenModal }: ModalProps) => {
+  const { contacts } = useContext(ContactsContext);
+  const { createConversation } = useContext(ConversationsContext);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  (selectedIds);
+
+  const handleCreate = () => {
+    createConversation(selectedIds)
+    setOpenModal(false);
+  };
+
+  const handleChange = (id: string) => {
+    setSelectedIds((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((i) => i !== id);
+      } else {
+        return [...prev, id];
+      }
+    })
+  };
+
   return (
-    <Dialog open={true} fullWidth>
+    <>
       <DialogTitle>Create Conversation</DialogTitle>
       <DialogContent>
         <Grid container flexDirection="column" gap={2}>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="blabla" />
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="blabla" />
-          </Grid>
-          <Grid item>
-            <FormControlLabel control={<Checkbox />} label="blabla" />
-          </Grid>
+          {contacts.map((contact) => (
+            <Grid item key={contact.id}>
+              <FormControlLabel
+                control={<Checkbox />}
+                label={contact.name}
+                onChange={() => handleChange(contact.id)}  
+              />
+            </Grid>
+          ))}
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button variant="contained">
+        <Button variant="contained" onClick={handleCreate}>
           Create
         </Button>
       </DialogActions>
-    </Dialog>
+    </>
   )
 }

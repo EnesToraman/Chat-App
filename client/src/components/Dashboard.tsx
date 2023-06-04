@@ -1,7 +1,19 @@
+import { useContext } from "react"
+import { Chat } from "./Chat"
 import { Sidebar } from "./Sidebar"
+import { ConversationsContext } from "../contexts/ConversationsContext"
+import { Grid } from "@mui/material"
 
-export const Dashboard = ({ id }: {id: string}) => {
+export const Dashboard = ({ id }: { id: string }) => {
+  const { selectedConversation } = useContext(ConversationsContext);
   return (
-    <Sidebar id={id} />
+    <Grid container>
+      <Grid item>
+        <Sidebar id={id} />
+      </Grid>
+      <Grid container item flex={1} position="relative">
+        {!!selectedConversation &&  <Chat />}
+      </Grid>
+    </Grid>
   )
 }
