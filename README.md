@@ -1,3 +1,3 @@
-<img width="1438" alt="image" src="https://github.com/EnesToraman/Chat-App/assets/87579632/65374d08-b537-4a1c-852f-e811b6eb0c74">
+![Single Conversation](https://github.com/EnesToraman/Chat-App/assets/87579632/1d9d3b52-0a81-4fd7-a5e7-8d467ac892eb)
 
-<img width="1437" alt="image" src="https://github.com/EnesToraman/Chat-App/assets/87579632/679f6bc1-e694-4fde-8449-37bf9b5f43df">
+![Group Conversation](https://github.com/EnesToraman/Chat-App/assets/87579632/73e42d70-59f2-43db-9559-dc7568091549)
