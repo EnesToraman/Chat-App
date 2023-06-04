@@ -1,7 +1,8 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import { ContactsContext } from './ContactsContext';
+import { ContactsContext } from './ContactsProvider';
 import { compareStringArray } from '../utils/compareStringArray';
+import { SocketContext } from './SocketProvider';
 
 interface Message {
   message: string,
@@ -42,6 +43,7 @@ export const ConversationsProvider = ({ id, children }: { id: string, children: 
   const [conversations, setConversations] = useLocalStorage<Conversation[]>('conversations', []);
   const [selectedConversationIndex, setSelectedConversationIndex] = useState<number>(0)
   const { contacts } = useContext(ContactsContext);
+  const socket = useContext(SocketContext);
 
   const createConversation = (recipients: string[]): void => {
     setConversations((prev: Conversation[]) => ([...prev, { recipients, messages: [] }]))
@@ -69,7 +71,7 @@ export const ConversationsProvider = ({ id, children }: { id: string, children: 
     return { ...conversation, messages, recipients, selected }
   })
 
-  const addMessageToConversation = (recipients: string[], message: string, sender: string) => {
+  const addMessageToConversation = useCallback(({recipients, message, sender}: {recipients: string[], message: string, sender: string}) => {
     setConversations((prev: Conversation[]) => {
       let conversationExist = false;
       const newMessage = { sender, message }
@@ -90,10 +92,20 @@ export const ConversationsProvider = ({ id, children }: { id: string, children: 
         return [...prev, { recipients, messages: [newMessage] }];
       }
     })
-  }
+  }, [setConversations])
+
+  useEffect(() => {
+    if (!socket.on) return;
+    socket.on('receive-message', addMessageToConversation)
+  
+    return () => {
+      socket.off('receive-message')
+    }
+  }, [socket, addMessageToConversation])
 
   const sendMessage = (recipients: string[], message: string) => {
-    addMessageToConversation(recipients, message, id);
+    socket.emit('send-message', {recipients, message})
+    addMessageToConversation({recipients, message, sender: id});
   }
 
   const value = {

@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Chat } from "./Chat"
 import { Sidebar } from "./Sidebar"
-import { ConversationsContext } from "../contexts/ConversationsContext"
+import { ConversationsContext } from "../contexts/ConversationsProvider"
 import { Grid } from "@mui/material"
 
 export const Dashboard = ({ id }: { id: string }) => {

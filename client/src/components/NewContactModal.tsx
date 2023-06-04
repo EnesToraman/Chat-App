@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { Button, DialogActions, DialogContent, DialogTitle, Grid, TextField } from '@mui/material'
-import { ContactsContext } from '../contexts/ContactsContext'
+import { ContactsContext } from '../contexts/ContactsProvider'
 
 interface Contact {
   id: string,

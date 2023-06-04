@@ -1,6 +1,6 @@
 import { MenuItem } from "@mui/material"
 import { useContext } from "react"
-import { ConversationsContext } from "../contexts/ConversationsContext"
+import { ConversationsContext } from "../contexts/ConversationsProvider"
 
 export const Conversations = () => {
   const { formattedConversations, setSelectedConversationIndex } = useContext(ConversationsContext);

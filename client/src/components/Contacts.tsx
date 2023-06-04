@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ContactsContext } from "../contexts/ContactsContext"
+import { ContactsContext } from "../contexts/ContactsProvider"
 import { MenuItem } from "@mui/material";
 
 export const Contacts = () => {

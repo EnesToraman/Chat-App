@@ -19,7 +19,7 @@ export const Login = (props: LoginProps) => {
 
   return (
     <Grid container justifyContent="center" alignItems="center" height="100vh">
-      <Grid container justifyContent="center" xs={8} spacing={2}>
+      <Grid container item justifyContent="center" xs={8} spacing={2}>
         <Grid item xs={12}>
           <TextField
             value={username}

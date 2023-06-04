@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from "@mui/material"
 import { useCallback, useContext, useState } from "react"
-import { ConversationsContext } from "../contexts/ConversationsContext";
+import { ConversationsContext } from "../contexts/ConversationsProvider";
 
 export const Chat = () => {
   const { sendMessage, selectedConversation } = useContext(ConversationsContext);

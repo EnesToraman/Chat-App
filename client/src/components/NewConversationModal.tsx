@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Button, Checkbox, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid } from '@mui/material'
-import { ContactsContext } from '../contexts/ContactsContext';
-import { ConversationsContext } from '../contexts/ConversationsContext';
+import { ContactsContext } from '../contexts/ContactsProvider';
+import { ConversationsContext } from '../contexts/ConversationsProvider';
 
 
 interface ModalProps {
