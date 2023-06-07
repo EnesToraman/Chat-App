@@ -10,10 +10,18 @@ export const Sidebar = ({ id }: { id: string }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
-    <Grid container flexDirection="column" borderRight="2px solid #F5F5F5" width="30vw" minWidth="300px" height="100vh" flexWrap="initial">
+    <Grid
+      container
+      flexDirection="column"
+      borderRight="2px solid #F5F5F5"
+      width="30vw"
+      minWidth="300px"
+      height="100vh"
+      flexWrap="initial"
+    >
       <Grid item p={2}>
         <Tabs value={activeTab} onChange={(_, val) => setActiveTab(val)}>
-          <Tab value={1} label="Conversations"  sx={{ flex: 1 }} />
+          <Tab value={1} label="Conversations" sx={{ flex: 1 }} />
           <Tab value={2} label="Contacts" sx={{ flex: 1 }} />
         </Tabs>
       </Grid>
@@ -23,7 +31,15 @@ export const Sidebar = ({ id }: { id: string }) => {
           : <Contacts />
         }
       </Grid>
-      <Grid container flexDirection="column" position="sticky" bottom={0} gap={2} padding={2} borderTop="2px solid #F5F5F5">
+      <Grid
+        container
+        flexDirection="column"
+        position="sticky"
+        bottom={0}
+        gap={2}
+        padding={2}
+        borderTop="2px solid #F5F5F5"
+      >
         <Grid item>
           <b>Your ID:</b> {id}
         </Grid>

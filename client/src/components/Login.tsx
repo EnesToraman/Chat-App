@@ -18,8 +18,19 @@ export const Login = (props: LoginProps) => {
   }
 
   return (
-    <Grid container justifyContent="center" alignItems="center" height="100vh">
-      <Grid container item justifyContent="center" xs={8} spacing={2}>
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      height="100vh"
+    >
+      <Grid
+        container
+        item
+        justifyContent="center"
+        xs={8}
+        spacing={2}
+      >
         <Grid item xs={12}>
           <TextField
             value={username}
@@ -36,7 +47,11 @@ export const Login = (props: LoginProps) => {
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" color="secondary" onClick={handleGeneratedLogin}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleGeneratedLogin}
+              >
                 Create New Username
               </Button>
             </Grid>

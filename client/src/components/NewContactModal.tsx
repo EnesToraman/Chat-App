@@ -29,10 +29,20 @@ export const NewContactModal = ({ setOpenModal }: ModalProps) => {
       <DialogContent>
         <Grid container flexDirection="column" gap={4} paddingTop={1}>
           <Grid item>
-            <TextField label="ID" fullWidth value={contact.id} onChange={(e) => setContact((prev) => ({...prev, id: e.target.value}))}/>
+            <TextField
+              label="ID"
+              fullWidth
+              value={contact.id}
+              onChange={(e) => setContact((prev) => ({ ...prev, id: e.target.value }))}
+            />
           </Grid>
           <Grid item>
-            <TextField label="Name" fullWidth value={contact.name} onChange={(e) => setContact((prev) => ({...prev, name: e.target.value}))}/>
+            <TextField
+              label="Name"
+              fullWidth
+              value={contact.name}
+              onChange={(e) => setContact((prev) => ({ ...prev, name: e.target.value }))}
+            />
           </Grid>
         </Grid>
       </DialogContent>
